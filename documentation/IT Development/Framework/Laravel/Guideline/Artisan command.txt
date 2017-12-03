@@ -1,0 +1,51 @@
+/*======================================
+			Create project 
+=======================================*/
+	- composer create-project laravel/laravel <project_name> 
+	
+	
+/*======================================
+			Start project 
+=======================================*/
+	- php artisan serve
+
+	
+	
+/*======================================
+		 Maintenance mode 
+=======================================*/
+
+	- php artisan down  (start)
+	- php artisan up  	(stop)
+
+
+
+/*======================================
+	Application name configuration 
+=======================================*/
+
+	- php artisan app:name <name-of-your-application>
+	
+
+/*======================================
+	Generate application key 
+=======================================*/
+
+	- php artisan key:generate 
+
+	
+	
+/*======================================
+		Create middleware
+=======================================*/
+
+	- php artisan make:middleware <middleware-name>
+	(location : app/Http/Middleware )
+	
+	
+/*======================================
+		Create controller
+=======================================*/
+
+	- php artisan make:controller <controller-name>
+	(location : )

@@ -1,0 +1,96 @@
+Documentation 
+	- collpase all 
+	- recent search 
+	- menu multiple collapse
+	- upload document / file 
+	- powerpoint ? 
+	- headline	
+	- headline collapse 
+	- 2 hr line collapse
+	- remove button  
+	- edit 
+	- smart search 
+	- error handling  : same folder / same file name 
+		- empty name 
+		- invalid name 
+		
+
+Idea
+	- search bar 			
+	- dom bug 		
+	- advance : drag and drop 
+	- No duplicate tag 	
+	- add tag to idea 
+	- all my idea
+	- all my participated competition idea 
+	- advance : use database , file got bug 
+	- double check all idea 
+	- test bug for idea list 
+	- autofill for tag 
+
+	
+Graphic Design 
+	- similar to documentation,but only can click on folder  (Ex : T shirt ) 
+	- side menu display sub tab (Ex : CLICQ, Acer ) 
+	- side menu start with All tab and display all design 
+	- when click on tab, display all design inside that tab 
+	- click and fullscreen
+	- psd,png file under the image , click and download 
+	- download function 
+	- uplaod function 
+	- smart search 
+	- different categories 
+		- video 
+		- poster 
+		- slide 
+		- tshirt 
+		- logo
+		- slogan
+		- app
+		- banner
+		- color combination 
+		- icon 
+		- inspiration 
+		- photography
+		- image 		
+
+Project 
+	- able to preview project 
+	- project list 
+	- search 
+	- categories 
+	- tag 
+	- uplaod project 
+	
+
+
+Work 		
+	- delete menu
+	- delete side menu 
+	
+development 
+	- search bar on menu and side menu 		
+	- full screen button 
+		
+Home
+	-  different search bar for different tab 
+	- recent open : localstorage 
+	
+	
+	
+All 
+	- hide side menu 
+	- design scroll bar 
+	- smart searching 
+	- seperate all function by section 
+	
+	
+Advance 
+	- devops : update to git or google drive 
+	- drag and drop the menu to move file / folder to different location 
+	- host it on server  ? 
+	- auto update to google drive 
+	- link project , design to google drive 
+	- setting page 
+		- select which part to download 
+

@@ -1,0 +1,19 @@
+/*======================================
+		Application structure
+=======================================*/
+
+-	app 
+-	bootstrap
+-	config
+-	database
+-	public
+-	resource
+-	routes
+-	storage
+-	tests
+-	vendor
+-	.env
+-	.env.example
+-	artisan
+-	composer
+-	server.php

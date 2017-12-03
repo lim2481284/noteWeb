@@ -1,0 +1,182 @@
+
+
+/*  DB	Configuration 
+
+=========================================================
+
+	- Location : config/database.php 
+	- Location : .env
+	
+	- Configure for .env : 
+		DB_CONNECTION=mysql
+		DB_HOST=127.0.0.1
+		DB_PORT=3306
+		DB_DATABASE=myDatabaseName
+		DB_USERNAME=root
+		DB_PASSWORD=
+	
+	- Configure for database.php :
+        'mysql' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'myDatabaseName'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],	
+		
+=========================================================
+		
+*/
+	
+	
+	
+/* Create database 	
+
+=========================================================	
+
+	- You only can create database from
+	  mySQL or phpmyadmin
+	  
+=========================================================
+
+*/
+
+
+	
+/* Create Table : Checking condition 	
+
+=========================================================	
+
+	- Check table is exist
+		if (Schema::hasTable('users')) {
+		
+	- Check column is exist 
+		if (Schema::hasColumn('users', 'email')) 
+		
+=========================================================
+
+*/
+
+
+	
+/* Migration command : table
+					
+=========================================================
+
+	- Create migration table :
+		php artisan make:migration my_table --create=my_table
+		
+	- Register migration : 
+		php artisan migration 
+		
+	- To rollback the latest migration operation : 
+		php artisan migrate:rollback
+
+	- To rollback a limited number of migrations by providing the step option :
+		php artisan migrate:rollback --step=5
+
+	- To roll back all of your application's migrations:
+		php artisan migrate:reset
+
+	- To roll back all of your migrations and then execute the migrate command
+		php artisan migrate:refresh
+	
+	- Refresh the database and run all database seeds
+		php artisan migrate:refresh --seed
+	
+===============================================================
+
+*/
+
+	
+	
+/* Common column type 
+
+=========================================================
+
+	- $table->increments('id');
+	- $table->timestamps('registerDate');
+	- $table->string('password',60);
+	- $table->integer('number');
+	- $table->double('number');
+	- $table->json('data');
+	
+=========================================================	
+
+*/	
+	
+	
+	
+/* Common column attribute 
+	
+=========================================================
+	
+	- $table->string('email',100)->unique();
+	- $table->integer('id')->primary();
+	
+=========================================================	
+
+*/	
+	
+	
+	
+/* Modify column 	
+
+=========================================================	
+
+	- Increase size 
+		$table->string('name', 50)->change();
+
+	- Rename column
+		$table->renameColumn('from', 'to');
+
+	- Drop a column
+		$table->dropColumn('votes');
+
+=========================================================
+
+*/
+	
+	
+	
+/* Seeding command : data
+		 
+=========================================================
+
+	- Generate seeder 
+		php artisan make:seeder mySeeder 
+
+	- Run seeder 
+		php artisan db:seed
+
+	- Run specific seeder 
+		php artisan db:seed --class=UsersTableSeeder
+		
+		
+=========================================================		 
+
+*/
+
+
+	
+/* Eloquent : model
+		 
+=========================================================
+
+	
+		
+
+
+=========================================================		 
+
+*/
+
+
+
