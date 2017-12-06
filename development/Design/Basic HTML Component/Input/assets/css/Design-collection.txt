@@ -1,0 +1,55 @@
+body{
+	font-family:"Arial" , sans-serif;
+	width:90%;
+	margin:auto;
+	margin-top:5%;
+}
+h1{
+	font-size:150%;
+}
+
+.demo-box{
+	position:relative;
+	float:left;	
+	text-align:center;
+	width:100%;
+	color:white;
+	height:230px;
+	margin-bottom:10%;
+}
+
+
+
+/* Design 1*/
+.circle{
+	width:150px;
+	height:150px;
+	border:3px solid #444444;
+	margin:auto;
+	display:flex;
+	border-radius:100%;
+	align-items:center;
+	justify-content :center;	
+}
+.circleInput{
+	border:none;
+	outline:none;
+	color:#444444;
+	text-align:center;
+	background:transparent;	
+	font-size:200%;
+	font-weight:700;
+}
+.circleInput::placeholder {
+  color: #444444;
+}
+.circleInput:hover{
+
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+

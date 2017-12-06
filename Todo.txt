@@ -71,6 +71,8 @@ Work
 development 
 	- search bar on menu and side menu 		
 	- full screen button 
+	- add responsive desig ntab 
+	- upload file 
 		
 Home
 	-  different search bar for different tab 
