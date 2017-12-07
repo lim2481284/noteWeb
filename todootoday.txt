@@ -1,0 +1,30 @@
+today todo 
+	- noteweb  ( 4 h ) 
+		- finish develop except serach 	
+			- download file ( can do later ) 
+			- download script  ( can do later ) 
+			- delete folder 
+			- delete file 
+		- hide side menu for all 
+		- collapse all menu for all
+		- multiple collpase menu for all		
+		- finsih idea 
+			- autofill for tag 
+			- double check current idea
+			- fill in 30 idea 
+		- finish work
+			- delete side menu 
+			- delete menu 
+			- download file 
+		- finsih documentation  
+			- remove menu
+			- remove file 
+			- upload file 
+			- full screen 
+
+	- fyp ( 10 h ) 
+		- finish main webpage 
+		- setup database 
+		- change design 
+		- finsih login 
+		- finish admin page 
