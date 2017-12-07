@@ -71,6 +71,10 @@ Work
 development 
 	- search bar on menu and side menu 		
 	- full screen button 
+	- upload function 		x
+	- add responsive 		x
+	- download file ( can do later ) 
+	- download script  ( can do later ) 
 		
 Home
 	-  different search bar for different tab 

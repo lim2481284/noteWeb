@@ -6,6 +6,21 @@ body{
 	padding-top:10px;
 	margin-left:5px;
 }
+.fullscreenBtn{
+	border:none !important;
+	opacity:0.5;
+	margin-right:3%;
+	margin-top:2%;	
+	right:0;
+	position:absolute;
+	outline:none;
+	background:transparent !important;
+	
+}
+.fullscreenBtn:hover{
+	background:transparent !important;
+	opacity:1;
+}
 
 .file-input-wrapper,
 .uploadForm

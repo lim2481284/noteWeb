@@ -71,6 +71,7 @@
 			if (!file_exists("$path/assets")) {
 				mkdir("$path/assets", 0777, true);
 				mkdir("$path/assets/css", 0777, true);
+				mkdir("$path/assets/responsive", 0777, true);
 				mkdir("$path/assets/js", 0777, true);
 				mkdir("$path/assets/plugin", 0777, true);
 				mkdir("$path/assets/image", 0777, true);
@@ -78,6 +79,10 @@
 				mkdir("$path/assets/php", 0777, true);
 				mkdir("$path/assets/other", 0777, true);
 			}
+			$css = fopen("$path/assets/responsive/$name.css", "a+");
+			fclose($css);		
+			$css = fopen("$path/assets/responsive/$name.txt", "a+");
+			fclose($css);	
 			$css = fopen("$path/assets/css/$name.css", "a+");
 			fclose($css);		
 			$css = fopen("$path/assets/css/$name.txt", "a+");
@@ -379,7 +384,7 @@
 						<form action='' class='uploadForm' id='uploadForm' method='post' enctype='multipart/form-data'>
 							<div class='file-input-wrapper'>
 								<button class='btn btn-default uploadFileBtn' value=\'work/$file/$currentTab/\'>Upload File</button>
-								<input type='file' name='fileUpload'  class='profileFileUpload' onchange='readURL(this, \"$path\");'/>
+								<input type='file' name='fileUpload'  class='profileFileUpload' onchange='readURL(this, \"$path\",\"hideSubmitBtn\");'/>
 								<input type='hidden' value=\'work/$file/$currentTab/\'/ name='path'>
 								<button type='submit' name='submit' class='hideSubmitBtn'>Submit</button>
 							</div>
@@ -644,6 +649,7 @@
 						<li class='active'><a data-toggle='tab' href='#preview'>Preview</a></li>
 						<li><a data-toggle='tab' href='#html' class='htmlTab'>HTML</a></li>
 						<li><a data-toggle='tab' href='#css' class='cssTab'>CSS</a></li>
+						<li><a data-toggle='tab' href='#responsive' class='responsiveTab'>Responsive</a></li>		
 						<li><a data-toggle='tab' href='#js' class='jsTab'>Javascript</a></li>
 						<li><a data-toggle='tab' href='#php' class='phpTab'>PHP</a></li>
 						<li><a data-toggle='tab' href='#sql'>SQL</a></li>
@@ -654,7 +660,10 @@
 					  <input type='hidden' class='developmentPath' value='$currentDir'/>
 					  <input type='hidden' class='developmentName' value='$name[0]'/>
 					  <div class='tab-content'>
-						<div id='preview' class='tab-pane fade in active'>							
+						<div id='preview' class='tab-pane fade in active'>	
+							<button type='button' class='fullscreenBtn btn btn-default btn-sm'>
+							  <span class='glyphicon glyphicon-fullscreen'></span>  
+							</button>
 							<iframe  class='previewFrame' src='$project'></iframe>												
 						</div>
 						<div id='html' class='tab-pane fade'>						  
@@ -666,6 +675,12 @@
 						   <button class='btn btn-default saveCss'>Save</button>
 						   <br><br>
 						  <label class='reminder'> To include CSS : <pre>&lt;link  rel='stylesheet' href='assets/css/$name[0].css'/&gt;</pre> </label>
+						</div>
+						<div id='responsive' class='tab-pane fade'>
+						  <textarea class='htmlTextarea responsiveArea' id='responsiveArea' onkeyup='auto_grow(this);'></textarea>
+						   <button class='btn btn-default saveResponsive'>Save</button>
+						   <br><br>
+						  <label class='reminder'> To include Responsive : <pre>&lt; link  rel='stylesheet'  media='screen and (max-width : 768px)' href='assets/responsive/$name[0].css'/&gt;</pre> </label>
 						</div>
 						<div id='js' class='tab-pane fade'>						
 						  <textarea class='htmlTextarea jsArea' id='jsArea' onkeyup='auto_grow(this);'></textarea>
@@ -680,8 +695,15 @@
 						  <label class='reminder'> To include PHP : <pre>&lt;?php include('assets/php/$name[0].php') ?&gt;</pre> </label>
 						</div>
 						<div id='img' class='tab-pane fade'>
-							<br><br>							
-							<button class='btn btn-default uploadImg'>Upload</button>	
+							<br><br>						
+							<form action='' class='uploadForm' id='uploadForm_img' method='post' enctype='multipart/form-data'>
+								<div class='file-input-wrapper'>
+									<button class='btn btn-default uploadImgBtn' value=\'$currentDir/assets/image/\'>Upload Image</button>
+									<input type='file' name='fileUpload'  class='profileFileUpload' onchange='readURL(this, \"$currentDir\",\"hideSubmitBtn_img\");'/>
+									<input type='hidden' value=\'$currentDir/assets/image/\' name='path'>
+									<button type='submit' name='submit' class='hideSubmitBtn hideSubmitBtn_img'>Submit</button>
+								</div>
+							</form>							
 							<br><br>							
 							<label class='reminder'> To include image : <pre>&lt;img src='assets/image/[fileName]'&gt;</pre> </label>
 						</div>
@@ -691,14 +713,28 @@
 							<br><br>
 						</div>						
 						<div id='plugin' class='tab-pane fade'>						  		 
-							<br><br>							
-							<button class='btn btn-default uploadPlugin'>Upload</button>	
+							<br><br>	
+							<form action='' class='uploadForm' id='uploadForm_plugin' method='post' enctype='multipart/form-data'>
+								<div class='file-input-wrapper'>
+									<button class='btn btn-default uploadImgBtn' value=\'$currentDir/assets/plugin/\'>Upload Image</button>
+									<input type='file' name='fileUpload'  class='profileFileUpload' onchange='readURL(this, \"$currentDir\",\"hideSubmitBtn_plugin\");'/>
+									<input type='hidden' value=\'$currentDir/assets/plugin/\' name='path'>
+									<button type='submit' name='submit' class='hideSubmitBtn hideSubmitBtn_plugin'>Submit</button>
+								</div>
+							</form>		
 							<br><br>							
 							<label class='reminder'> To include image : <pre>&lt; ... src='assets/plugin/[fileName]'&gt;</pre> 
 						</div>
 						<div id='other' class='tab-pane fade'>						  		 
-							<br><br>							
-							<button class='btn btn-default uploadOther'>Upload</button>	
+							<br><br>	
+							<form action='' class='uploadForm' id='uploadForm_other' method='post' enctype='multipart/form-data'>				
+								<div class='file-input-wrapper'>
+									<button class='btn btn-default uploadOtherBtn' value=\'$currentDir/assets/other/\'>Upload</button>
+									<input type='file' name='fileUpload'  class='profileFileUpload' onchange='readURL(this, \"$currentDir\",\"hideSubmitBtn_other\");'/>
+									<input type='hidden' value=\'$currentDir/assets/other/\' name='path'>
+									<button type='submit' name='submit' class='hideSubmitBtn hideSubmitBtn_other'>Submit</button>
+								</div>
+							</form>
 							<br><br>							
 							<label class='reminder'> To include image : <pre>&lt; ... src='assets/other/[fileName]'&gt;</pre> 
 						</div>
@@ -715,6 +751,12 @@
 						$('.htmlArea').val(data);											
 						
 					});
+					
+					//Load responsive 
+					var responsivePath = '$current/responsive/$name[0].txt';						
+					$.get(responsivePath, function (data){
+						$('.responsiveArea').val(data);
+					});					
 					
 					//Load css 
 					var cssPath = '$current/css/$name[0].txt';						

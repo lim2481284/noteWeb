@@ -246,8 +246,9 @@ $(function() {
 	
 */
 
-function readURL(input,path) {
-	$('.hideSubmitBtn').click();	
+function readURL(input,path,formName) {
+	
+	$('.'+formName).click();	
 }
 
 
@@ -752,6 +753,26 @@ $(document).on('click','.addTagBtn',function(){
 ==========================================================================*/
 
 
+
+
+/*
+
+	full screen function
+
+*/
+
+$(document).on('click','.fullscreenBtn',function(){
+	$(this).parent().parent().parent().parent().css({
+		position: 'absolute',
+		top: '0px',
+		left: '0px',
+		width: $(window).width(),
+		height: $(window).height()
+	});
+	
+});
+
+
 /*
 
 	Save js function 
@@ -861,6 +882,48 @@ $(document).on('click','.savePhp',function(){
 	});				
 
 });
+
+
+/*
+
+	Save responsive function 
+	
+*/
+
+$(document).on('click','.saveResponsive',function(){	
+	var content = $('.responsiveArea').val();
+	var oriPath = $('.developmentPath').attr('value');	
+	var name = $('.developmentName').attr('value');	
+	path = oriPath+'assets/responsive/'+name+'.css';	
+	
+	$.ajax({						
+		type: 'post',
+		data: { 
+			"saveNote": "1",
+			"content":content,
+			"path" :path
+		},
+		dataType: "text",
+		success: function(response) { 
+			path = oriPath+'assets/responsive/'+name+'.txt';	
+			$.ajax({						
+				type: 'post',
+				data: { 
+					"saveNote": "1",
+					"content":content,
+					"path" :path
+				},
+				dataType: "text",
+				success: function(response) { 
+					swal('Saved',response,'success');
+					window.location.reload(true);
+				}
+			});	
+		}
+	});				
+
+});
+
 
 /*
 
