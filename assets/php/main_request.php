@@ -4,6 +4,32 @@
 
 
 
+/*=========================================================================
+
+					Common function section
+
+==========================================================================*/
+
+
+	 /*
+		Handle delete folder request 
+	*/	
+	 if( isset($_POST["deleteFolder"])) {		 
+		$path = $_POST["path"];		
+		deleteFolder($path);	
+		exit();
+     }
+
+
+	 /*
+		Handle delete file  request 
+	*/	
+	 if( isset($_POST["deleteFile"])) {		 
+		$path = $_POST["path"];		
+		deleteFile($path);	
+		exit();
+     }	 
+
 
 /*=========================================================================
 
@@ -89,6 +115,15 @@
 ==========================================================================*/
 
 
+	 /*
+		Handle delete folder request -- work
+	*/	
+	 if( isset($_POST["deleteFolder_work"])) {		 
+		$path = $_POST["path"];		
+		deleteFile("$path/index.html");	
+		deleteFolder($path);	
+		exit();
+     }
 
 
 	/*
@@ -242,6 +277,8 @@
 					Development function section
 
 ==========================================================================*/
+
+
 
 	 /*
 		Handle create development child request 

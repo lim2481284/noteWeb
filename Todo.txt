@@ -2,7 +2,7 @@ Documentation
 	- collpase all 
 	- recent search 
 	- menu multiple collapse
-	- upload document / file 
+	- upload document / file  ?
 	- powerpoint ? 
 	- headline	
 	- headline collapse 
@@ -25,7 +25,8 @@ Idea
 	- all my participated competition idea 
 	- advance : use database , file got bug 
 	- double check all idea 
-
+	- double check tag 
+	- update what all technologyu can do 
 	
 Graphic Design 
 	- similar to documentation,but only can click on folder  (Ex : T shirt ) 
@@ -82,7 +83,9 @@ Home
 	
 	
 All 
-	- hide side menu 
+	- hide side menu for all 
+	- collapse all menu for all
+	- multiple collpase menu for all		
 	- design scroll bar 
 	- smart searching 
 		- search all the content in every file and display result in list view with different categories 1

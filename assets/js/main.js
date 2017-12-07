@@ -1,8 +1,83 @@
 
+
+/*=========================================================================
+
+					Common function section 
+
+==========================================================================*/
+
+
 $.ajaxSetup ({
     // Disable caching of AJAX responses
     cache: false
 });
+
+
+
+/*
+
+	Delete folder function 
+	
+*/
+
+$(document).on('click','.deleteBtn',function(){	
+	var path = $(this).attr('value');		
+	swal({
+	  title: 'Confirm delete?',	 
+	  type: 'warning',
+	  showCancelButton: true,
+	  allowOutsideClick: false	  
+	}).then((result) => {
+	  if (result.value) {
+		$.ajax({
+			type: "post",
+			data: {
+				"deleteFolder": "1",
+				"path": path,						
+			},
+			success: function(data){   					
+				window.location.reload(true);
+											
+			}
+		});
+	  }
+	});	  	
+});
+
+
+
+/*
+
+	Delete file function 
+	
+*/
+
+$(document).on('click','.deleteFileBtn',function(){	
+
+	var path = $(this).attr('value');		
+	swal({
+	  title: 'Confirm delete?',	 
+	  type: 'warning',
+	  showCancelButton: true,
+	  allowOutsideClick: false	  
+	}).then((result) => {
+	  if (result.value) {
+		var path = $(this).attr('value');		
+		$.ajax({
+			type: "post",
+			data: {
+				"deleteFile": "1",
+				"path": path,						
+			},
+			success: function(data){   					
+				window.location.reload(true);
+											
+			}
+		});
+	  }
+	});
+});
+
 
 
 /*=========================================================================
@@ -26,6 +101,12 @@ $(function(){
 	});
 	$('li').mouseout(function(){
 		$(this).find('.createBtn').hide();
+	});	
+	$('li').mouseover(function(){
+		$(this).find('.menuBtn').show();
+	});
+	$('li').mouseout(function(){
+		$(this).find('.menuBtn').hide();
 	});	
 
 	
@@ -239,6 +320,38 @@ $(function() {
 
 ==========================================================================*/
 
+/*
+
+	Delete folder function  -- work
+	
+*/
+
+$(document).on('click','.deleteBtn_work',function(){	
+	var path = $(this).attr('value');		
+	
+	swal({
+	  title: 'Confirm delete?',	 
+	  type: 'warning',
+	  showCancelButton: true,
+	  allowOutsideClick: false	  
+	}).then((result) => {
+	  if (result.value) {
+		$.ajax({
+			type: "post",
+			data: {
+				"deleteFolder_work": "1",
+				"path": path,						
+			},
+			success: function(data){   					
+				window.location.reload(true);											
+			}
+		});		  
+	  }
+	});
+
+});
+
+
 
 /*
 
@@ -386,6 +499,7 @@ $(document).ready(function(){
 	});	
 	$("#txtEditor_idea").Editor();
 	$(".createBtn").hide();	
+	$(".menuBtn").hide();	
 	
 	
 });
@@ -566,7 +680,7 @@ $(document).on('click','.editIdeaBtn',function(){
 	for(var i = 0; i < tag.length; i++){
 		$('.tagArea').prepend(`
 			<div class='col-sm-12 noPadding tagItem'>
-				<input class='tagItemInput form-control' value='`+$(tag[i]).html()+`'/>
+				<input list="tagDataList" class='tagItemInput form-control' value='`+$(tag[i]).html()+`'/>
 			</div>
 		`);
 	}	
@@ -726,7 +840,7 @@ $(document).on('click','.deleteTag',function(){
 $(document).on('click','.addTagBtn',function(){	
 	$('.tagArea').prepend(`
 		<div class='col-sm-12 noPadding tagItem'>
-			<input class='tagItemInput form-control'/>
+			<input list="tagDataList" class='tagItemInput form-control'/>
 			<button class='deleteTag'>x</button>
 		</div>
 	`);
@@ -804,6 +918,46 @@ $(document).on('click','.saveJs',function(){
 			});	
 		}
 	});				
+
+});
+
+
+/*
+
+	Download File function --script 
+	
+*/
+
+$(document).on('click','.downloadFileBtn',function(){	
+	var path = $(this).parent().find('.downloadValue').attr('value');
+	
+});
+
+/*
+
+	Save sql function 
+	
+*/
+
+$(document).on('click','.saveSql',function(){	
+	var content = $('.sqlArea').val();
+	var oriPath = $('.developmentPath').attr('value');	
+	var name = $('.developmentName').attr('value');		
+
+	path = oriPath+'assets/sql/'+name+'.txt';	
+	$.ajax({						
+		type: 'post',
+		data: { 
+			"saveNote": "1",
+			"content":content,
+			"path" :path
+		},
+		dataType: "text",
+		success: function(response) { 
+			swal('Saved',response,'success');
+			window.location.reload(true);
+		}
+	});	
 
 });
 
@@ -986,7 +1140,6 @@ $(document).on('click','.saveHtml',function(){
 	});				
 
 });
-
 
 /*
 

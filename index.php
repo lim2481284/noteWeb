@@ -184,9 +184,10 @@
 					<div class='col-sm-1 noPadding'>
 						<label class='inputAreaLabel'> Tag </label>
 					</div> 
-					<div class='col-sm-6 tagArea'>
-						
+					<div class='col-sm-6 tagArea'>						
 						<button class='btn btn-default addTagBtn'> Add tag </button>
+						<datalist class='tagDataList' id="tagDataList">							
+						</datalist>						
 					</div>					
 				</div>
 				<div class='col-sm-12 inputArea'>
@@ -202,6 +203,7 @@
 					
 					<button class='addNewIdea btn btn-primary'>Add</button>	
 				</div>
+
 				
 			</div>
 		</div>

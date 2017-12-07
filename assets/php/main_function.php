@@ -7,6 +7,35 @@
 
 /*=========================================================================
 
+						Share function section 
+						
+==========================================================================*/
+
+
+	/*
+		Delete folder function 
+	*/
+	
+	function deleteFolder($path)
+	{					
+		rmdir("$path");
+						
+	}
+
+	/*
+		Delete file function 
+	*/
+	
+	function deleteFile($path)
+	{					
+		unlink("$path");
+						
+	}
+
+
+
+/*=========================================================================
+
 					Documentation function section
 
 ==========================================================================*/
@@ -116,7 +145,7 @@
 			$key=  end(array_keys($projectName));
 			$name =  $projectName[$key];
 			$name = explode(".", $name);			
-			$projectList =  " <li class='fileItem'><a href='?documentation=$currentDir/$projectName[$key]'> $name[0] </a></li>";
+			$projectList =  " <li class='fileItem'><a href='?documentation=$currentDir/$projectName[$key]'> $name[0] </a><button type='button' value='$currentDir/$projectName[$key]' class='btn btn-default  deleteFileBtn menuBtn'> x </button></li>";
 			echo $projectList;						
 		 }	
 		 if($file)
@@ -135,7 +164,7 @@
 		 foreach ($directories as &$projectName) {
 			$projectName = explode("/", $projectName);
 			$key=  end(array_keys($projectName));
-			$projectList =  " <li> $projectName[$key] <button type='button' value='$currentDir/$projectName[$key]' class='btn btn-default createBtn'> + </button> </li>";
+			$projectList =  " <li> $projectName[$key] <button type='button' value='$currentDir/$projectName[$key]' class='btn btn-default createBtn'> + </button><button type='button' value='$currentDir/$projectName[$key]' class='btn btn-default  deleteBtn menuBtn'> x </button> </li>";
 			echo $projectList;			
 			checkList("$currentDir/$projectName[$key]");
 			checkFile("$currentDir/$projectName[$key]");
@@ -156,7 +185,7 @@
 			$projectList = "<div class='menuItem'> <ul class='itemList'> ";
 			echo $projectList;
 			$projectName = explode("/", $projectName);
-			$projectList =  "<li class='test' href='#$count' data-toggle='collapse'>$projectName[1] <button type='button' value='documentation/$projectName[1]' class='btn btn-default createBtn'> + </button> </li>
+			$projectList =  "<li class='test' href='#$count' data-toggle='collapse'>$projectName[1] <button type='button' value='documentation/$projectName[1]' class='btn btn-default createBtn'> + </button><button type='button' value='documentation/$projectName[1]' class='btn btn-default  deleteBtn menuBtn'> x </button> </li>
 			<div id='$count' class='collapse'>";
 			echo $projectList;			
 			checkList("documentation/$projectName[1]");
@@ -231,9 +260,9 @@
 			else 
 			{				
 				if($currentTab == $projectName[2])
-					$projectList="<a href='?work=$currentWork&current=$projectName[2]'><li  class='ideaListItem active' value='$projectName[2]' >$projectName[2] </li></a>";		
+					$projectList="<a href='?work=$currentWork&current=$projectName[2]'><li  class='ideaListItem active' value='$projectName[2]' >$projectName[2]<button type='button' value='work/$currentWork/$projectName[2]' class='btn btn-default  deleteBtn_work menuBtn sideMenuBtn'> x </button> </li></a>";		
 				else 
-					$projectList="<a href='?work=$currentWork&current=$projectName[2]'><li class='ideaListItem' value='$projectName[2]' >$projectName[2] </li></a>";	
+					$projectList="<a href='?work=$currentWork&current=$projectName[2]'><li class='ideaListItem' value='$projectName[2]' >$projectName[2]  <button type='button' value='work/$currentWork/$projectName[2]' class='btn btn-default  deleteBtn_work menuBtn sideMenuBtn'> x </button></li></a>";	
 			}				
 			echo $projectList;			
 		 }
@@ -265,7 +294,7 @@
 			$projectList = "<div class='menuItem'> <ul class='itemList'> ";
 			echo $projectList;
 			$projectName = explode("/", $projectName);
-			$projectList =  "<li class='test' href='#$count'><a href='?work=$projectName[1]'> $projectName[1]</a> </li>";
+			$projectList =  "<li class='test' href='#$count'><a href='?work=$projectName[1]'> $projectName[1]</a>  </button><button type='button' value='work/$projectName[1]' class='btn btn-default  deleteBtn menuBtn'> x </button></li>";
 			echo $projectList;						
 			$projectList = "</div></ul>";
 			echo $projectList;
@@ -419,8 +448,9 @@
 						 foreach ($files as $projectName) {		
 								$projectName = explode("/", $projectName);	
 								if($projectName[3]!='index.html')
+								{
 									echo " $('.tag-body').append('<li><a href=\"work/$file/$currentTab/$projectName[3]\" download=\"$projectName[3]\"> $projectName[3]</a></li>');";
-						 
+								}
 						 }
 						 echo " $('.tag-body').append('</ul>');";	
 				echo "});
@@ -507,6 +537,9 @@
 						for(var i = 0; i < arr.length; i++){							
 							$('.tag-body').append(`
 								<label class='checkbox-inline'><input type='checkbox' class='checkbox' value='`+arr[i]+`'>`+arr[i]+`</label>
+							`);
+							$('.tagDataList').append(`
+								<option value='`+arr[i]+`'></option>
 							`);
 						}
 						$('.ideaTable').show();
@@ -671,28 +704,33 @@
 						<div id='html' class='tab-pane fade'>						  
 						  <textarea class='htmlTextarea htmlArea' id='htmlArea' onkeyup='auto_grow(this);'></textarea>
 						  <button class='btn btn-default saveHtml'>Save</button>
+						  <a href='$currentDir/$name[0].html' download> <button class='btn btn-default downloadFileBtn'>Download</button> </a>
 						</div>
 						<div id='css' class='tab-pane fade'>
 						  <textarea class='htmlTextarea cssArea' id='cssArea' onkeyup='auto_grow(this);'></textarea>
 						   <button class='btn btn-default saveCss'>Save</button>
+						   <a href='$currentDir/assets/css/$name[0].css' download> <button class='btn btn-default downloadFileBtn'>Download</button> </a>
 						   <br><br>
 						  <label class='reminder'> To include CSS : <pre>&lt;link  rel='stylesheet' href='assets/css/$name[0].css'/&gt;</pre> </label>
 						</div>
 						<div id='responsive' class='tab-pane fade'>
 						  <textarea class='htmlTextarea responsiveArea' id='responsiveArea' onkeyup='auto_grow(this);'></textarea>
 						   <button class='btn btn-default saveResponsive'>Save</button>
+						   <a href='$currentDir/assets/responsive/$name[0].css' download> <button class='btn btn-default downloadFileBtn'>Download</button> </a>
 						   <br><br>
 						  <label class='reminder'> To include Responsive : <pre>&lt; link  rel='stylesheet'  media='screen and (max-width : 768px)' href='assets/responsive/$name[0].css'/&gt;</pre> </label>
 						</div>
 						<div id='js' class='tab-pane fade'>						
 						  <textarea class='htmlTextarea jsArea' id='jsArea' onkeyup='auto_grow(this);'></textarea>
 						  <button class='btn btn-default saveJs'>Save</button>
+						  <a href='$currentDir/assets/js/$name[0].js' download> <button class='btn btn-default downloadFileBtn'>Download</button> </a>
 						   <br><br>
 						  <label class='reminder'> To include JS : <pre>&lt;script src='assets/js/$name[0].js'/&gt;&lt;script&gt;</pre> </label>
 						</div>
 						<div id='php' class='tab-pane fade'>
 						  <textarea class='htmlTextarea phpArea' id='phpArea' onkeyup='auto_grow(this);'></textarea>
-						  <button class='btn btn-default savePhp'>Save</button>
+						  <button class='btn btn-default savePhp'>Save</button>						  
+						  <a href='$currentDir/assets/php/$name[0].php' download> <button class='btn btn-default downloadFileBtn'>Download</button> </a>
 						   <br><br>
 						  <label class='reminder'> To include PHP : <pre>&lt;?php include('assets/php/$name[0].php') ?&gt;</pre> </label>
 						</div>
@@ -725,8 +763,9 @@
 							<label class='reminder'> To include image : <pre>&lt;img src='assets/image/[fileName]'&gt;</pre> </label>
 						</div>
 						<div id='sql' class='tab-pane fade'>						  		 
-							<textarea class='htmlTextarea sqlArea' id='sqlArea' onkeyup='auto_grow(this);'></textarea>
+							<textarea class='htmlTextarea sqlArea' id='sqlArea' onkeyup='auto_grow(this);'></textarea>							
 							<button class='btn btn-default saveSql'>Save</button>
+							<a href='$currentDir/assets/sql/$name[0].txt' download> <button class='btn btn-default downloadFileBtn'>Download</button> </a>
 							<br><br>
 						</div>						
 						<div id='plugin' class='tab-pane fade'>						  		 
@@ -894,7 +933,7 @@
 			$key=  end(array_keys($projectName));
 			$name =  $projectName[$key];
 			$name = explode(".", $name);			
-			$projectList =  " <li class='fileItem'><a href='?development=$currentDir/$projectName[$key]'> $name[0] </a></li>";
+			$projectList =  " <li class='fileItem'><a href='?development=$currentDir/$projectName[$key]'> $name[0] </a> <button type='button' value='$currentDir/$projectName[$key]' class='btn btn-default  deleteFileBtn menuBtn'> x </button></li>";
 			echo $projectList;						
 		 }	
 		 if($file)
@@ -916,7 +955,7 @@
 			 $key=  end(array_keys($projectName));
 			 if($projectName[$key] !="assets")
 			 {
-				$projectList =  " <li> $projectName[$key] <button type='button' value='$currentDir/$projectName[$key]' class='btn btn-default createBtn_development'> + </button> </li>";
+				$projectList =  " <li> $projectName[$key] <button type='button' value='$currentDir/$projectName[$key]' class='btn btn-default createBtn_development'> + </button> <button type='button' value='$currentDir/$projectName[$key]' class='btn btn-default  deleteBtn menuBtn'> x </button></li>";
 				echo $projectList;			
 				checkList_development("$currentDir/$projectName[$key]");
 				checkFile_development("$currentDir/$projectName[$key]");
@@ -938,7 +977,7 @@
 			$projectList = "<div class='menuItem'> <ul class='itemList'> ";
 			echo $projectList;
 			$projectName = explode("/", $projectName);
-			$projectList =  "<li class='test' href='#development_$count' data-toggle='collapse'>$projectName[1] <button type='button' value='development/$projectName[1]' class='btn btn-default createBtn_development'> + </button> </li>
+			$projectList =  "<li class='test' href='#development_$count' data-toggle='collapse'>$projectName[1] <button type='button' value='development/$projectName[1]' class='btn btn-default menuBtn createBtn_development'> + </button> <button type='button' value='development/$projectName[1]' class='btn btn-default  deleteBtn menuBtn'> x </button></li>
 			<div id='development_$count' class='collapse'>";
 			echo $projectList;			
 			checkList_development("development/$projectName[1]");
