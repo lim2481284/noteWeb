@@ -3,14 +3,12 @@ body{
 	width:90%;
 	margin:auto;
 	margin-top:5%;
-	background:#95D3FF;	
 }
 h1{
 	font-size:150%;
 }
 
 .demo-box{
-	background:#95D3FF;
 	position:relative;
 	float:left;	
 	text-align:center;
@@ -26,7 +24,7 @@ h1{
 .circle{
 	width:150px;
 	height:150px;
-	border:3px solid white;
+	border:3px solid #444444;
 	margin:auto;
 	display:flex;
 	border-radius:100%;
@@ -36,14 +34,14 @@ h1{
 .circleInput{
 	border:none;
 	outline:none;
-	color:white;
+	color:#444444;
 	text-align:center;
 	background:transparent;	
 	font-size:200%;
 	font-weight:700;
 }
 .circleInput::placeholder {
-  color: white;
+  color: #444444;
 }
 .circleInput:hover{
 

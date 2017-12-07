@@ -71,10 +71,15 @@ Work
 development 
 	- search bar on menu and side menu 		
 	- full screen button 
+<<<<<<< HEAD
 	- upload function 		x
 	- add responsive 		x
 	- download file ( can do later ) 
 	- download script  ( can do later ) 
+=======
+	- add responsive desig ntab 
+	- upload file 
+>>>>>>> df9349e2e50d1e678d6b692c22486950281eb65e
 		
 Home
 	-  different search bar for different tab 
