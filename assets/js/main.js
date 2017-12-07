@@ -762,14 +762,8 @@ $(document).on('click','.addTagBtn',function(){
 */
 
 $(document).on('click','.fullscreenBtn',function(){
-	$(this).parent().parent().parent().parent().css({
-		position: 'absolute',
-		top: '0px',
-		left: '0px',
-		width: $(window).width(),
-		height: $(window).height()
-	});
-	
+	$(this).parent().parent().parent().parent().toggleClass('fullscreen');
+	$('.headlineSection').toggleClass('displayToggle');
 });
 
 

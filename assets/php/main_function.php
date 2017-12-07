@@ -414,13 +414,15 @@
 					$('.contentSection').load(encodeURI('work/$file/$currentTab/index.html'),function(){
 						";
 						
-						 $files = glob("work/$file/$currentTab/*");		
+						 $files = glob("work/$file/$currentTab/*");	
+					     echo " $('.tag-body').append('<ul class=\'fileLink\'>');";	
 						 foreach ($files as $projectName) {		
 								$projectName = explode("/", $projectName);	
 								if($projectName[3]!='index.html')
-									echo " $('.tag-body').append('$projectName[3]');";
+									echo " $('.tag-body').append('<li><a href=\"work/$file/$currentTab/$projectName[3]\" download=\"$projectName[3]\"> $projectName[3]</a></li>');";
 						 
 						 }
+						 echo " $('.tag-body').append('</ul>');";	
 				echo "});
 									
 										
@@ -696,6 +698,21 @@
 						</div>
 						<div id='img' class='tab-pane fade'>
 							<br><br>						
+							<div class='panel-group' id='accordion'>
+								<div class='panel panel-default'>
+								  <div class='panel-heading'>
+									<h4 class='panel-title'>
+									  <a data-toggle='collapse' data-parent='#accordion' href='#collapse_img'>Image</a>
+									</h4>
+								  </div>							  
+								  <div id='collapse_img' class='panel-collapse collapse'>
+									<div class='tag-body imageFile'>	
+									
+									</div>
+								  </div>
+								</div>  
+							</div>
+							<br><br>
 							<form action='' class='uploadForm' id='uploadForm_img' method='post' enctype='multipart/form-data'>
 								<div class='file-input-wrapper'>
 									<button class='btn btn-default uploadImgBtn' value=\'$currentDir/assets/image/\'>Upload Image</button>
@@ -713,20 +730,48 @@
 							<br><br>
 						</div>						
 						<div id='plugin' class='tab-pane fade'>						  		 
+							<br><br>
+							<div class='panel-group' id='accordion'>
+								<div class='panel panel-default'>
+								  <div class='panel-heading'>
+									<h4 class='panel-title'>
+									  <a data-toggle='collapse' data-parent='#accordion' href='#collapse_plugin'>Plugin file</a>
+									</h4>
+								  </div>							  
+								  <div id='collapse_plugin' class='panel-collapse collapse'>
+									<div class='tag-body pluginFile'>																	
+									</div>
+								  </div>
+								</div>  
+							</div>
 							<br><br>	
 							<form action='' class='uploadForm' id='uploadForm_plugin' method='post' enctype='multipart/form-data'>
 								<div class='file-input-wrapper'>
-									<button class='btn btn-default uploadImgBtn' value=\'$currentDir/assets/plugin/\'>Upload Image</button>
+									<button class='btn btn-default uploadImgBtn' value=\'$currentDir/assets/plugin/\'>Upload Plugin</button>
 									<input type='file' name='fileUpload'  class='profileFileUpload' onchange='readURL(this, \"$currentDir\",\"hideSubmitBtn_plugin\");'/>
 									<input type='hidden' value=\'$currentDir/assets/plugin/\' name='path'>
 									<button type='submit' name='submit' class='hideSubmitBtn hideSubmitBtn_plugin'>Submit</button>
 								</div>
 							</form>		
 							<br><br>							
-							<label class='reminder'> To include image : <pre>&lt; ... src='assets/plugin/[fileName]'&gt;</pre> 
+							<label class='reminder'> To include plugin : <pre>&lt; ... src='assets/plugin/[fileName]'&gt;</pre> 
 						</div>
 						<div id='other' class='tab-pane fade'>						  		 
 							<br><br>	
+							<div class='panel-group' id='accordion'>
+								<div class='panel panel-default'>
+								  <div class='panel-heading'>
+									<h4 class='panel-title'>
+									  <a data-toggle='collapse' data-parent='#accordion' href='#collapse_other'>Other file </a>
+									</h4>
+								  </div>							  
+								  <div id='collapse_other' class='panel-collapse collapse'>
+									<div class='tag-body otherFile'>																	
+									</div>
+								  </div>
+								</div>  
+							</div>
+							<br><br>
 							<form action='' class='uploadForm' id='uploadForm_other' method='post' enctype='multipart/form-data'>				
 								<div class='file-input-wrapper'>
 									<button class='btn btn-default uploadOtherBtn' value=\'$currentDir/assets/other/\'>Upload</button>
@@ -736,11 +781,48 @@
 								</div>
 							</form>
 							<br><br>							
-							<label class='reminder'> To include image : <pre>&lt; ... src='assets/other/[fileName]'&gt;</pre> 
+							<label class='reminder'> To include other file  : <pre>&lt; ... src='assets/other/[fileName]'&gt;</pre> 
 						</div>
 					  </div>
 						
-					`);
+					`);";
+					
+					 // Load Image file 
+					 $files = glob("$currentDir/assets/image/*");	
+					 echo " $('.imageFile').append('<ul class=\'fileLink\'>');";	
+					 foreach ($files as $projectName) {		
+							$projectName = explode("/", $projectName);	
+							if($projectName[5]!='index.html')
+								echo " $('.imageFile').append('<li><a href=\"$currentDir/assets/image/$projectName[5]\" download=\"$projectName[5]\"> $projectName[5]</a></li>');";
+								
+					 }
+					 echo " $('.imageFile').append('</ul>');";	
+
+					 // Load Plugin file 
+					 $files = glob("$currentDir/assets/plugin/*");	
+					 echo " $('.pluginFile').append('<ul class=\'fileLink\'>');";	
+					 foreach ($files as $projectName) {		
+							$projectName = explode("/", $projectName);	
+							if($projectName[5]!='index.html')
+								echo " $('.pluginFile').append('<li><a href=\"$currentDir/assets/plugin/$projectName[5]\" download=\"$projectName[5]\"> $projectName[5]</a></li>');";
+								
+					 }
+					 echo " $('.pluginFile').append('</ul>');";	
+
+
+					 // Load Other file 
+					 $files = glob("$currentDir/assets/other/*");	
+					 echo " $('.otherFile').append('<ul class=\'fileLink\'>');";	
+					 foreach ($files as $projectName) {		
+							$projectName = explode("/", $projectName);	
+							if($projectName[5]!='index.html')
+								echo " $('.otherFile').append('<li><a href=\"$currentDir/assets/other/$projectName[5]\" download=\"$projectName[5]\"> $projectName[5]</a></li>');";
+								
+					 }
+					 echo " $('.otherFile').append('</ul>');";	
+					 
+						 
+					echo"
 					
 					//Load all the script
 					

@@ -7,26 +7,24 @@ Documentation
 	- headline	
 	- headline collapse 
 	- 2 hr line collapse
-	- remove button  
-	- edit 
+	- remove button 
 	- smart search 
+		- search all the content from every file and display result in list view 
 	- error handling  : same folder / same file name 
 		- empty name 
 		- invalid name 
 		
 
 Idea
-	- search bar 			
+	- search bar 
+		- search all the content from every file and display result in list view 
 	- dom bug 		
 	- advance : drag and drop 
-	- No duplicate tag 	
-	- add tag to idea 
+	- No duplicate tag 	 
 	- all my idea
 	- all my participated competition idea 
 	- advance : use database , file got bug 
 	- double check all idea 
-	- test bug for idea list 
-	- autofill for tag 
 
 	
 Graphic Design 
@@ -39,6 +37,7 @@ Graphic Design
 	- download function 
 	- uplaod function 
 	- smart search 
+		- search only the title 
 	- different categories 
 		- video 
 		- poster 
@@ -58,46 +57,41 @@ Project
 	- able to preview project 
 	- project list 
 	- search 
+		- search only the title 
 	- categories 
 	- tag 
 	- uplaod project 
 	
 
-
 Work 		
+	- search 
+		- search all the content in everyfile and dispaly result in list 
+	- download file 
 	- delete menu
 	- delete side menu 
 	
 development 
 	- search bar on menu and side menu 		
-	- full screen button 
-<<<<<<< HEAD
-	- upload function 		x
-	- add responsive 		x
-	- download file ( can do later ) 
-	- download script  ( can do later ) 
-=======
-	- add responsive desig ntab 
-	- upload file 
->>>>>>> df9349e2e50d1e678d6b692c22486950281eb65e
+		- on search the file name or folder name 
+			- then display all the result in list view
+
 		
 Home
 	-  different search bar for different tab 
-	- recent open : localstorage 
-	
+	-  recent open : localstorage 
 	
 	
 All 
 	- hide side menu 
 	- design scroll bar 
 	- smart searching 
-	- seperate all function by section 
+		- search all the content in every file and display result in list view with different categories 1
 	
 	
 Advance 
-	- devops : update to git or google drive 
+	- devops : auto update/upgrade to/from  git or google drive 
 	- drag and drop the menu to move file / folder to different location 
-	- host it on server  ? 
+	- host it on server  ? bu domain ?
 	- auto update to google drive 
 	- link project , design to google drive 
 	- setting page 

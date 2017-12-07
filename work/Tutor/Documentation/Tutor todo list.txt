@@ -1,0 +1,34 @@
+
+
+Todo 
+	- chat 
+	- transaction 
+	- bug fix 
+		- set profile 
+		- edit or delete subject or qualification stay on same page ? ajax or just append 
+		
+	- UI/UX improve 
+		- search page 
+		- blog page 
+		- blog content page 
+		- search result content page 
+		- student profile page reduce gap , improve 
+		- tutor blog list 
+		- tutor create blog editor remove some button 
+		
+	- Display how many student pucrhase and view in the search result list ( later ) 
+
+
+Not yet done 
+	- Forgot password 
+	- Double check all 
+	- tutor notification 
+	- total view and purchase 
+	- my favourite 
+	- purchase history 
+	- purchase 
+	- chat 	
+	- feedback
+	- setting 
+	- admin notification
+	
