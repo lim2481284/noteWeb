@@ -1,13 +1,8 @@
-today todo 
-	- noteweb  ( 4 h ) 
-		- finsih idea 			
-			- double check current idea		
-			- fill in 20 idea 				
-		- register hilti 
 
-	- fyp ( 10 h ) 
-		- finish main webpage 
-		- setup database 
-		- change design 
-		- finsih login 
-		- finish admin page 
+
+- fyp ( 10 h ) 
+	- finish main webpage 
+	- setup database 
+	- change design 
+	- finsih login 
+	- finish admin page 
