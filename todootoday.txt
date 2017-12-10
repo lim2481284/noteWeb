@@ -1,8 +1,0 @@
-
-
-- fyp ( 10 h ) 
-	- finish main webpage 
-	- setup database 
-	- change design 
-	- finsih login 
-	- finish admin page 

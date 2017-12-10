@@ -1,0 +1,31 @@
+body{
+	font-family:"Arial" , sans-serif;
+	width:90%;
+	margin:auto;
+	margin-top:5%;
+}
+h1{
+	font-size:150%;
+}
+
+.demo-box{
+	position:relative;
+	float:left;	
+	text-align:center;
+	width:25%;
+	color:gray;
+	height:230px;
+	margin-bottom:10%;
+}
+
+
+
+/* Design 1*/
+.design1{
+
+}
+.design1:hover{
+
+}
+
+

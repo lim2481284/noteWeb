@@ -1,6 +1,7 @@
 Documentation 
 	- collpase all 
 	- recent search 
+	- table button , onclick create 1 row 1 column table 
 	- menu multiple collapse
 	- upload document / file  ?
 	- powerpoint ? 
@@ -75,21 +76,44 @@ development
 	- search bar on menu and side menu 		
 		- on search the file name or folder name 
 			- then display all the result in list view
-
+			
+	- sidebar add file 
+	- code editor design
+	- move around on sidebar 
+	
 		
 Home
 	-  different search bar for different tab 
 	-  recent open : localstorage 
-	
+		- recend search 
+	-  todo 
+		- side tab 
+		- complted, in progress
+		- onchange 2 sec save 
+		- overflow bug 
+		- texteditor ?
+	- reminder 
+		- side calander 
+		- below calander is the event list sort by date 
+		- onchange 2 sec save 
+	- note 
+		- side tab 
+		- onchange 2 sec save 
 	
 All 
+	- rename for all 
 	- hide side menu for all 
 	- collapse all menu for all
 	- multiple collpase menu for all		
 	- design scroll bar 
 	- smart searching 
 		- search all the content in every file and display result in list view with different categories 1
-	
+	- improve editor
+		- create table in one click 
+			- one row one column full width 
+		- shift tab = reduce tab 
+		- increase tab bug : font change ? 
+			-	double increase ? 
 	
 Advance 
 	- devops : auto update/upgrade to/from  git or google drive 

@@ -34,7 +34,7 @@
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 		<div class="navbar-header">
-		  <a class="navbar-brand" href="#">NoteWeb</a>
+		  <a class="navbar-brand" href="./">NoteWeb</a>
 		</div>
 		<ul class="nav navbar-nav">
 		 <li><a href="#development">Development</a></li>
@@ -59,7 +59,7 @@
 		</ul>
 		<form class="navbar-form navbar-right">
 		  <div class="input-group">
-			<input type="text" class="form-control" placeholder="Search">
+			<input type="text" class="form-control" placeholder="Search overall">
 			<div class="input-group-btn">
 			  <button class="btn btn-default" type="submit">
 				<i class="glyphicon glyphicon-search"></i>
@@ -70,7 +70,54 @@
 	  </div>
 	</nav>
 
+	
+	
+	<!--Homepage content section  --> 
+	<div class='homepageContentSection container' >	
+		<ul class="nav nav-tabs">
+		  <li class="active"><a data-toggle="tab" href="#todo">Todo</a></li>
+		  <li><a data-toggle="tab" href="#reminder">Reminder</a></li>
+		  <li><a data-toggle="tab" href="#note">Note</a></li>
+		  <li><a data-toggle="tab" href="#recent">Recent</a></li>			  			  
+		</ul>
 
+		<div class="tab-content">
+		  <div id="todo" class="tab-pane fade in active">
+			<div class='col-sm-12  homeTodoSection'>
+				<div class='col-sm-3 homeSideMenu'>					
+					<h3> Todo list  </h3>
+					<br>
+					<ul class='todoSideMenu'>
+					</ul>
+					<center>
+						<button class='addTodo btn btn-default'> + </button>
+					</center>
+				</div>
+				<div class='col-sm-9 homeContent todoContent' contenteditable >
+				
+				</div>
+			</div>
+		  </div>
+		  <div id="reminder" class="tab-pane fade">
+
+		  </div>			  
+		  <div id="note" class="tab-pane fade">
+			<h2>Guide</h2>
+			<pre>
+<b>To add empty folder to git : </b>
+	- find . -type d -empty -exec touch {}/.gitignore \;
+						
+			</pre>
+		  </div>
+		  <div id="recent" class="tab-pane fade">
+
+		  </div>
+
+		</div>			
+			
+	</div>
+	
+	
 	<!--Main content section  --> 
 	<div class='documentationContentSection' >	
 		<div class='col-sm-12'>
@@ -81,7 +128,6 @@
 			<div class='col-sm-10 contentMainSection'>
 				<div class='topic col-sm-12'></div>
 				<div class='tagSection col-sm-12'>
-
 				</div>
 				<div class='contentSection col-sm-12'></div>
 				<div class=' col-sm-12'>

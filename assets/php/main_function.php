@@ -33,6 +33,51 @@
 	}
 
 
+/*=========================================================================
+
+						Share function section 
+						
+==========================================================================*/
+
+	/*
+		Call todo menu list 
+	*/
+	
+	function todoList()
+	{	
+		 $directories = glob('homepage/todo/*' , GLOB_ONLYDIR);		
+		 $count =0;
+		 foreach ($directories as &$projectName) {
+			$projectName = explode("/", $projectName);
+			$projectList = "
+				<li value='homepage/todo/$projectName[2]'>
+					$projectName[2]
+					<button type='button' value='homepage/todo/$projectName[2]' class='btn btn-default  deleteBtn_work menuBtn'>
+						x 
+					</button> 
+				</li>
+			";		
+			echo "
+				$('.todoSideMenu').append(`$projectList`);
+			";
+			$count++;
+		 }
+	
+	}	
+	
+
+	/*
+		Create todo function
+	*/
+	
+	function createTodo($name)
+	{					
+		mkdir("homepage/todo/$name", 0700);
+		$file = fopen("homepage/todo/$name/index.html", "w");
+		fwrite($file, $content);
+		fclose($file);		
+	}
+
 
 /*=========================================================================
 

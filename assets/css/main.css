@@ -1,7 +1,45 @@
+
+
 body{
 	font-family:"Arial" , sans-serif;		
 	overflow:hidden;
 }
+.minHeight-100{
+	min-height:50vh !important; 
+}
+.homeContent{
+	min-height:50vh !important;
+	padding:2%;
+	margin-top:3%;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+	border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.homeSideMenu{
+	border:none;
+	padding:2%;
+	padding-top:1%;
+	padding-bottom:4%;
+	background:white;
+	margin-top:0%;
+}
+
+.contentSection table{
+    color: rgb(0, 0, 0);
+    text-shadow: rgb(255, 255, 255) 0px 1px;
+    background: rgba(238, 238, 238, 0.35);
+    box-shadow: rgba(0, 0, 0, 0.125) 0px 2px 5px;
+	border: 1px solid lightgray;		
+}
+.homepageContentSection{
+	display:none;
+}
+
+
+
 .deleteBtn,
 .deleteBtn_work,
 .deleteFileBtn{

@@ -31,6 +31,42 @@
      }	 
 
 
+
+
+/*=========================================================================
+
+					Homepage function section
+
+==========================================================================*/	 
+	
+	 
+	 /*
+		Handle homepage display request 
+	*/	
+	 if (empty($_GET) || ( isset($_GET["home"]))) {		
+		echo "
+			<script>
+				$(document).ready(function(){
+					$('.homepageContentSection').show();
+					";
+					todoList();
+					
+					echo"
+				});
+			</script>		
+		";
+	 }
+
+	
+	/*
+		Handle create todo request 
+	*/	
+	 if( isset($_POST["createTodo"])) {
+		$project = $_POST["createTodo"];
+		createTodo($project);		
+     }
+	 
+	 
 /*=========================================================================
 
 					Documentation function section

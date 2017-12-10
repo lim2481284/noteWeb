@@ -14,6 +14,8 @@ $.ajaxSetup ({
 
 
 
+
+
 /*
 
 	Delete folder function 
@@ -78,6 +80,52 @@ $(document).on('click','.deleteFileBtn',function(){
 	});
 });
 
+
+/*=========================================================================
+
+					Homepage function section 
+
+==========================================================================*/
+
+
+/*
+
+	Create new todo button function 
+
+*/
+
+$('.addTodo').click(function(){
+	swal({	  
+	  allowOutsideClick: false,
+	  showCancelButton: true,
+	  html:'<form id="myForm" action="#" method="post" ><br><label class="swal-label">Name  </label><input id="swal-input-name" name="createTodo" class="swal2-input"  value=""></form>',			  
+	  focusConfirm: false,
+	  preConfirm: function () {
+		return new Promise(function (resolve,reject) {	
+			if(!$('#swal-input-name').val())
+			{							
+				reject('Please fill in all the info');
+			}					  
+			else {
+				resolve([
+				  $('#swal-input-name').val(),
+				])					
+			}
+		})
+	  }
+	}).then(function (result) {						
+		  if (result.value) {
+			 jQuery.ajax({
+                type: "POST",
+                data:  $("form").serialize(),
+                success: function(data){   					
+					window.location.reload(true);
+					
+                }
+			});
+		  } 								
+	}).catch(swal.noop)	
+});
 
 
 /*=========================================================================
