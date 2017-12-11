@@ -1,0 +1,51 @@
+body{
+	font-family:"Arial" , sans-serif;
+	width:90%;
+	margin:auto;
+	margin-top:5%;
+}
+h1{
+	font-size:150%;
+}
+
+.demo-box{
+	position:relative;
+	float:left;	
+	text-align:center;
+	width:100%;
+	color:gray;
+	height:230px;
+	margin-bottom:10%;
+}
+
+
+
+/*=============================
+			 Design 1
+============================*/
+
+.design_1{
+	width:100%;
+}
+
+.design_1 td th{
+	text-align: left; 
+	padding: 8px;
+	border-collapse: collapse; 
+}
+
+.design_1 tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+.design_1 th{
+	padding-bottom:2%;
+}
+
+
+.design_1 td{
+	padding-top:2%;
+	padding-bottom:2%;
+}
+
+

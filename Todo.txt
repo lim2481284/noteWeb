@@ -69,7 +69,7 @@ Work
 	- search 
 		- search all the content in everyfile and dispaly result in list 
 	- download file 
-	- delete menu
+	- delete menu not working 
 	- delete side menu 
 	
 development 
@@ -80,7 +80,8 @@ development
 	- sidebar add file 
 	- code editor design
 	- move around on sidebar 
-	
+	- save button save all tab content 
+	- 2 more option, template big and template small 
 		
 Home
 	-  different search bar for different tab 
@@ -92,7 +93,8 @@ Home
 		- onchange 2 sec save 
 		- overflow bug 
 		- texteditor ?
-	- reminder 
+		- todo tab is default -- side menu 
+	- calander 
 		- side calander 
 		- below calander is the event list sort by date 
 		- onchange 2 sec save 
@@ -101,19 +103,25 @@ Home
 		- onchange 2 sec save 
 	
 All 
+	- fix cache problem 
+	- editro add one more function : collapse button 
+	- onchange 2 sec save 
 	- rename for all 
+	- export file to pdf 
 	- hide side menu for all 
 	- collapse all menu for all
 	- multiple collpase menu for all		
 	- design scroll bar 
 	- smart searching 
 		- search all the content in every file and display result in list view with different categories 1
-	- improve editor
+	- improve editor UX
+		- press tab inside table  = create new row 
 		- create table in one click 
 			- one row one column full width 
 		- shift tab = reduce tab 
 		- increase tab bug : font change ? 
-			-	double increase ? 
+			-	double increase ?
+		- ctrl + s trigger save file 
 	
 Advance 
 	- devops : auto update/upgrade to/from  git or google drive 

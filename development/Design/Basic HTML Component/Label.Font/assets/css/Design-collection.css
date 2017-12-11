@@ -1,0 +1,39 @@
+body{
+	font-family:"Arial" , sans-serif;
+	width:90%;
+	margin:auto;
+	margin-top:5%;
+}
+h1{
+	font-size:150%;
+}
+
+.demo-box{
+	position:relative;
+	float:left;	
+	text-align:center;
+	width:25%;
+	color:gray;
+	height:230px;
+	margin-bottom:10%;
+}
+
+
+
+/* Design 1*/
+.design_1{
+    background: #252525;
+    display: inline-block;
+    padding: 15px 28px 12px;
+    border-bottom: 7px solid #0ba39c;
+    font-size: 35px;
+    color: #fff;	
+    text-transform: uppercase;
+    font-family: "Lemon/Milk", Helvetica, sans-serif;
+    font-weight:bold;
+}
+.design_1:hover{
+
+}
+
+

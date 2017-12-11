@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-
-<html>
+<html >
 <head>
 
 	<!-- Meta list  --> 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Cache-control" content="no-cache">
-	<meta http-equiv="Expires" content="-1">
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="expires" content="0">
 	<!-- Stylesheet for this page --> 
 	<link rel="stylesheet" href="assets/css/bootstrap.css"> 		
 	<link rel="stylesheet" href="assets/css/sweetalert.css">
@@ -76,7 +76,7 @@
 	<div class='homepageContentSection container' >	
 		<ul class="nav nav-tabs">
 		  <li class="active"><a data-toggle="tab" href="#todo">Todo</a></li>
-		  <li><a data-toggle="tab" href="#reminder">Reminder</a></li>
+		  <li><a data-toggle="tab" href="#reminder">Calander</a></li>
 		  <li><a data-toggle="tab" href="#note">Note</a></li>
 		  <li><a data-toggle="tab" href="#recent">Recent</a></li>			  			  
 		</ul>
@@ -271,7 +271,7 @@
 
 <!-- Script for this page  --> 
 <script src="assets/js/sweetalert.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js?n=1"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="assets/js/editor.js"></script>
