@@ -38,7 +38,7 @@
 		</div>
 		<ul class="nav navbar-nav">
 		 <li><a href="#development">Development</a></li>
-		  <li><a href="#documentation">Documentation</a></li>
+		  <li><a href="#documentation">Knowledge</a></li>
 		  <li><a href="#design">Design</a></li>
 		  <li><a href="#project">Project</a></li>
 		  <li><a href="?ideatab=Idea list" class='ideaTab' >Idea</a></li>
@@ -50,7 +50,7 @@
 			  <span class="caret"></span></button>
 			  <ul class="dropdown-menu">
 				<li><a href="#competition" class='findCom'>Find competition</a></li>	
-				<li><a href="#" class='timeline'>Timeline</a></li>	
+				<li><a href="#" class='timeline'>Achievement</a></li>	
 				<li><a href="#" class='setting'>Setting</a></li>
 				
 			  </ul>
@@ -180,8 +180,8 @@
 			<a class="closeBtn" href="#">&times;</a>
 			<div class="box">
 				<div class='col-sm-12'>
-					<h2> Documentation </h2>
-					<button type='button' class='btn btn-default createNewDocument'> New documentation </button>		
+					<h2> Knowledge </h2>
+					<button type='button' class='btn btn-default createNewDocument'> New Knowledge </button>		
 				</div>				
 				<div class='col-sm-12 menuList'>
 					<?php listMenu(); ?>									
