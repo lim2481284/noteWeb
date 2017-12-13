@@ -103,6 +103,7 @@ Home
 		- onchange 2 sec save 
 	
 All 
+	- upload file bug : should be last name ( Example at sample cookie handle ) 
 	- fix cache problem 
 	- editro add one more function : collapse button 
 	- onchange 2 sec save 
