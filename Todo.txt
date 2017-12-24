@@ -13,7 +13,7 @@ Documentation
 		- search all the content from every file and display result in list view 
 	- error handling  : same folder / same file name 
 		- empty name 
-		- invalid name 
+		- invalid name t
 		
 
 Idea
