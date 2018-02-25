@@ -58,6 +58,7 @@
 		  </li>
 		</ul>
 		<form class="navbar-form navbar-right">
+			<!--
 		  <div class="input-group">
 			<input type="text" class="form-control" placeholder="Search overall">
 			<div class="input-group-btn">
@@ -66,6 +67,7 @@
 			  </button>
 			</div>
 		  </div>
+			-->
 		</form>
 	  </div>
 	</nav>
@@ -195,11 +197,19 @@
 	<!-- Popout for development section  -->
    <div id="development" class="overlay">
 		<div class="popout">
-			<a class="closeBtn" href="#">&times;</a>
+			<a class="closeBtn" id='closeBtn_development' href="#">&times;</a>
 			<div class="box">
 				<div class='col-sm-12'>
 					<h2> Development </h2>
 					<button type='button' class='btn btn-default createNewDevelopment'> New Development </button>
+					<div class='input-group developmentSearch search_input col-xs-3'>
+						<input type='text' class='form-control searchInputField ' placeholder='Search development'>
+						<div class='input-group-btn'>
+							<button class='btn btn-default searchInputBtn' type='submit'>
+							<i class='glyphicon glyphicon-search'></i>
+							</button>
+						</div>
+					</div>
 				</div>
 				<div class='col-sm-12 menuList'>
 					<?php listMenu_development(); ?>

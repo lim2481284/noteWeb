@@ -343,6 +343,129 @@
 ==========================================================================*/
 
 
+	/*
+		Handle search request
+	*/
+ if( isset($_POST["search"])) {
+		$keyword  = $_POST["keyword"];
+		echo "<!----- Data here ---->";
+		displaySearchResultDevelopment($keyword);
+		exit();
+	}
+
+	/*
+	 Handle  directory btn request
+	*/
+	if( isset($_POST["Dir"])) {
+			$currentDir = $_POST["currentDir"];
+
+			// To specify string split
+			print "<!----- Data here ---->";
+
+			// Get directory
+			$Dir = $currentDir;
+
+			if($Dir != 'development/Development/'){
+				// Display button
+				echo"
+						<div class='input-group'>
+							<button class='btn btn-default previousDir ' value ='$Dir'> <</button>
+						</div>
+						<div class='tabList'>
+				";
+
+			}
+
+			// Default configuration
+			$project = $Dir;
+			$projectName = explode("/", $project);
+			$key=  end(array_keys($projectName));
+			$name =  $projectName[$key];
+			$folder = $projectName[$key-1];
+			$name = explode(".", $name);
+
+
+			// Display menu item
+			displaySideMenuItem("$Dir","$folder"," $name[0]",'folder');
+
+			echo"
+				</div>
+			";
+
+			exit();
+	};
+
+
+
+	/*
+	 Handle previous directory btn request
+	*/
+	if( isset($_POST["prevDir"])) {
+			$currentDir = $_POST["currentDir"];
+
+			// To specify string split
+			print "<!----- Data here ---->";
+
+			// Get previous directory
+			$Dir = $currentDir;
+			while(1){
+				if(substr("$Dir", -1)=='/')
+				{
+					$Dir = substr("$Dir", 0, -1);
+				}
+				else
+						break;
+			}
+			while(1){
+				if(substr("$Dir", -1)!='/')
+				{
+					$Dir = substr("$Dir", 0, -1);
+				}
+				else
+						break;
+			}
+			while(1){
+				if(substr("$Dir", -1)=='/')
+				{
+					$Dir = substr("$Dir", 0, -1);
+				}
+				else
+						break;
+			}
+
+			// Remove duplicate slash
+			$Dir =preg_replace('/[\\/]+/', '/', $Dir);
+			$dirSize = explode("/", $Dir);
+			$dirSize = sizeof($dirSize);
+			if($dirSize>2){
+				// Display button
+				echo"
+						<div class='input-group'>
+							<button class='btn btn-default previousDir ' value ='$Dir'> <</button>
+						</div>
+						<div class='tabList'>
+				";
+			}
+
+			// Default configuration
+			$project = $Dir;
+			$projectName = explode("/", $project);
+			$key=  end(array_keys($projectName));
+			$name =  $projectName[$key];
+			$folder = $projectName[$key-1];
+			$name = explode(".", $name);
+
+			// Display menu item
+			displaySideMenuItem("$Dir","$folder"," $name[0]","file");
+
+			echo"
+				</div>
+			";
+
+			exit();
+	};
+
+
 
 	 /*
 		Handle create development child request

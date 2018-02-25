@@ -1,3 +1,5 @@
+
+
 .sideMenuHeader{
 	width: 100%;
 	text-align: center;
@@ -188,10 +190,53 @@ display: -webkit-inline-box !important;
 	margin-bottom:2%;
 
 }
+.searchResultLabel{
+	font-size: 130%;
+	border-bottom: 1px solid gray;
+	margin-bottom: 5%;
+	padding-bottom: 2%;
+}
+
+.searchResultBox{
+		width: 60%;
+    height: 100%;
+    overflow: auto !important;
+    left: 0;
+    margin: auto;
+    padding-bottom: 500px;
+    position: absolute;
+    right: 0;
+}
+.searchResultParent_file{
+	color:gray;
+}
+.searchResultList{
+	padding: 10px;
+	border-bottom: 1px solid lightgray;
+	padding-bottom: 20px;
+}
+.createNewDevelopment{
+	float:left;
+	margin-right: 2%;
+}
+.search_input{
+	float:left !important;
+	position: relative !important;
+}
+.sideMenuFolderBtn{
+	border:none;
+	background: transparent;
+	outline: none;
+}
+.headlineSection > ::-webkit-scrollbar,
+.searchResultBox::-webkit-scrollbar{
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
 
 .tabList{
 	margin-top:10%;
-	margin-bottom:20%;
+	margin-bottom:100%;
 }
 a{
 	color:gray ;
@@ -290,8 +335,14 @@ a{
 }
 
 .parentList{
+	cursor: pointer;
 	font-weight:bold;
 	padding-left:5px;
+	margin-top:5%;
+}
+.childList_parent{
+	padding-left:5px;
+	margin-top:5%;
 }
 .childList{
 	padding-left:35px;

@@ -748,7 +748,192 @@
 
 ==========================================================================*/
 
+	// Function to display side menu item
+	function displaySideMenuItem($currentDir, $folder, $fileName,$fileType ){
 
+		/*=============================================
+										List side menu
+
+			1 - Get parent folder of current folder
+			2 - Get list of the same level folder from parent folder
+			3 - Display all folder name in collapse type
+			4 - Get all the child of the folder and put inside the collapse
+			5 - if folder name is same as current folder then collpase the item
+			6 - if back button click, get previous level from current level and refresh list
+
+		==============================================*/
+
+		// To Get parent folder of current folder
+		$Dir = $currentDir;
+		while(1){
+			if(substr("$Dir", -1)=='/')
+			{
+				$Dir = substr("$Dir", 0, -1);
+			}
+			else
+					break;
+		}
+		while(1){
+			if(substr("$Dir", -1)!='/')
+			{
+				$Dir = substr("$Dir", 0, -1);
+			}
+			else
+					break;
+		}
+
+
+
+		// Get list of the same level folder from parent folder
+		$directories = glob("$Dir/*" , GLOB_ONLYDIR);
+		$count =0;
+		foreach ($directories as &$projectName) {
+			$count++;
+
+			//Display parent name
+			$currentFolder  =  $projectName;
+			$projectName = explode("/", $projectName);
+			$key=  end(array_keys($projectName));
+			$name2 =  $projectName[$key];
+			$name2 = explode(".", $name2);
+			echo "<div class='parentList' data-toggle='collapse'  href='#sideMenuDir_$count'>  $name2[0]</div>";
+
+			//Collapse item if is curent path
+			if($fileType =="folder"){
+
+				if(trim($name2[0] ) == trim($fileName)) echo "<div id='sideMenuDir_$count' class='panel-collapse collapse in'>";
+				else echo "<div id='sideMenuDir_$count' class='panel-collapse collapse'>";
+			}
+			else {
+				if($name2[0] == $folder ) echo "<div id='sideMenuDir_$count' class='panel-collapse collapse in'>";
+				else echo "<div id='sideMenuDir_$count' class='panel-collapse collapse'>";
+			}
+
+
+			$file = glob("$currentFolder/*" );
+			foreach ($file as &$projectName) {
+
+					$pathName = $projectName;
+
+					//Get file name
+					$projectName = explode("/", $projectName);
+					$key=  end(array_keys($projectName));
+					$name2 =  $projectName[$key];
+					$name2 = explode(".", $name2);
+
+					//Check if path is file
+					if(is_file($pathName)){
+						//Check if path is current path
+						if(trim($fileName) == trim($name2[0]))
+						{
+							$projectList =  " <div class='childList'><a class='active' href='?development=$currentDir$projectName[$key]'> $name2[0] </a></div>";
+						}
+						else
+						{
+							$projectList = "<div class='childList'><a href='?development=$currentFolder/$projectName[$key]'> $name2[0] </a></div>";
+						}
+						echo $projectList;
+					}
+					else {
+						if($name2[0] !="assets")
+						{
+							$folderList = "<div class='childList'><button class='sideMenuFolderBtn' value='$pathName'> $name2[0] </button></div>";
+							echo $folderList;
+						}
+					}
+			}
+
+			echo "</div>
+			";
+		 }
+
+		 //Display file item from parent folder
+		 $file = glob("$Dir/*.html" );
+		 foreach ($file as &$projectName) {
+			 $projectName = explode("/", $projectName);
+			 $key=  end(array_keys($projectName));
+			 $name2 =  $projectName[$key];
+			 $name2 = explode(".", $name2);
+
+			 if($fileName== $name2[0])
+				 $projectList =  " <div class='childList_parent'><a class='active' href='?development=$currentDir$projectName[$key]'> $name2[0] </a></div>";
+			 else
+				 $projectList = "<div class='childList_parent'><a href='?development=$currentFolder/$projectName[$key]'> $name2[0] </a></div>";
+			 echo $projectList;
+		 }
+	}
+
+
+	//Function to search through file and content
+	function searchContent($file, $keyword, $parent){
+
+		//If content matched
+		$content = file_get_contents($file->getPathname());
+		if (stripos($content, $keyword) !== false) {
+				echo "
+					<div class='searchResultList_file searchResultList'>
+						<div class='searchResultParent_file'>$parent</div>
+						<div class='searchResultChild_file'><a href='?development=$parent$file'>$file</a></div>
+					</div>
+				";
+		}
+	}
+
+
+	// Function to search through folder
+	function searchName($dir, $keyword){
+
+		//Get parent name
+		$parent = $dir;
+
+		$dir = new DirectoryIterator($dir);
+		foreach ($dir as $file) {
+			if($file !='.' && $file != '..' &&$file !='assets')
+			{
+				//Check if path is folder or file
+				if(is_file($file->getPathname())){
+
+					//if file name is matched
+					if (stripos($file, $keyword) !== false) {
+						echo "
+							<div class='searchResultList_file searchResultList'>
+								<div class='searchResultParent_file'>$parent</div>
+								<div class='searchResultChild_file'><a href='?development=$parent$file'>$file</a></div>
+							</div>
+						";
+					}
+					else {
+						//Check file content
+						searchContent($file,$keyword, $parent);
+					}
+
+				}
+				else {
+					//if folder name is matched
+					if (stripos($file, $keyword) !== false) {
+						echo "
+							<div class='searchResultList_folder searchResultList'>
+								<div class='searchResultParent_file'>$parent</div>
+								<div class='searchResultChild_file'>$file</div>
+							</div>
+						";
+					}
+					//Check next folder
+					searchName($file->getPathname(),$keyword);
+				}
+			}
+		}
+	}
+
+
+
+	/*
+		Display search result
+	*/
+	function displaySearchResultDevelopment($keyword)
+	{
+		searchName('development',$keyword);
+	}
 
 	/*
 		Display development function
@@ -772,37 +957,32 @@
 					$('.documentationContentSection').show();
 					$('.headline').attr('class','sidemenu');
 					$('.sidemenu').html(`
+
 						<div class='input-group'>
-							<input type='text' class='form-control' placeholder='Search'>
-							<div class='input-group-btn'>
-							  <button class='btn btn-default' type='submit'>
-								<i class='glyphicon glyphicon-search'></i>
-							  </button>
-							</div>
+							<!--
+							Display search
+									<input type='text' class='form-control' placeholder='Search'>
+									<div class='input-group-btn'>
+									  <button class='btn btn-default' type='submit'>
+										<i class='glyphicon glyphicon-search'></i>
+									  </button>
+									</div>
+							-->
+							<button class='btn btn-default previousDir ' value ='$currentDir'> <</button>
 						</div>
+
 						<div class='tabList'>
-							<div class='parentList'> $folder</div>
+
 						";
 
-						// List side menu
-						$file = glob("$currentDir/*.html" );
-						foreach ($file as &$projectName) {
-							 $projectName = explode("/", $projectName);
-							$key=  end(array_keys($projectName));
-							$name2 =  $projectName[$key];
-							$name2 = explode(".", $name2);
+						//Display side menu item
+						displaySideMenuItem("$currentDir","$folder"," $name[0]",'file');
 
-							if($name[0] == $name2[0])
-								$projectList =  " <div class='childList'><a class='active' href='?development=$currentDir$projectName[$key]'> $name2[0] </a></div>";
-							else
-								$projectList =  " <div class='childList'><a href='?development=$currentDir$projectName[$key]'> $name2[0] </a></div>";
-							echo $projectList;
-						}
 
+						//Check if file is note
 						$checkFile = $currentDir."assets/css/$name[0].css";
 						$current = $currentDir."assets";
 
-						//Check if file is note
 						if (!file_exists("$checkFile"))
 						{
 		echo "

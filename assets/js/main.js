@@ -1077,6 +1077,86 @@ $(document).on('click','.addTagBtn',function(){
 ==========================================================================*/
 
 
+/*
+
+	 Search button
+
+*/
+$(document).on('click','.searchInputBtn',function(){
+
+  //Get search input
+  var searchInput = $('.searchInputField').val();
+  $("#closeBtn_development")[0].click();
+  $('.documentationContentSection').empty();
+  $('.documentationContentSection').html("<div class='searchResultBox'><h1 class='searchResultLabel'>Search Result</h1></div>")
+
+  //Send ajax request
+  $.ajax({
+    type: 'post',
+    data: {
+      "search": "1",
+			"keyword" :searchInput
+    },
+    dataType: "text",
+    success: function(response) {
+      var response = response.split("<!----- Data here ---->").pop();
+      $('.searchResultBox').append(response);
+    }
+  });
+});
+
+
+
+/*
+
+	 Directory button
+
+*/
+$(document).on('click','.sideMenuFolderBtn',function(){
+	var currentDir= $(this).attr('value');
+  $('.sidemenu').empty();
+
+  $.ajax({
+    type: 'post',
+    data: {
+      "Dir": "1",
+			"currentDir" :currentDir
+    },
+    dataType: "text",
+    success: function(response) {
+      var response = response.split("<!----- Data here ---->").pop();
+      $('.sidemenu').html(response);
+    }
+  });
+
+});
+
+
+
+/*
+
+	Previous directory button
+
+*/
+$(document).on('click','.previousDir',function(){
+	var currentDir= $(this).attr('value');
+  $('.sidemenu').empty();
+
+  $.ajax({
+    type: 'post',
+    data: {
+      "prevDir": "1",
+			"currentDir" :currentDir
+    },
+    dataType: "text",
+    success: function(response) {
+      var response = response.split("<!----- Data here ---->").pop();
+      $('.sidemenu').html(response);
+    }
+  });
+
+});
+
 
 
 /*
